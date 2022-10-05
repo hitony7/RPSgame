@@ -31,5 +31,28 @@ function playSingleRound (playerSelection, ComputerChoice){
 }
 
 function game(){
-    for
+    let playerScore = 0;
+    let computerScore = 0;
+    //play atleast 5 Rounds first to 3
+    for (let i =0; i < 5;i++) {
+        console.log("Rock, Paper or,Scissors?")
+        let playerSelection = prompt();
+        let output = playSingleRound(playerSelection, getComputerChoice());
+        if (output.charAt(0) == "P"){
+            //If player wins
+            playerScore++;
+        } else if (output.charAt(0) == "C"){
+            //If player loses
+            computerScore++;
+        } else {
+            //TIE add another round of playing
+            i--;
+        }
+        console.log("Player score:" + playerScore + "|  Computer Score: " + computerScore)
+    }
+    if (playerScore > computerScore){
+        console.log("Player Wins the Series!")
+    } else {
+        console.log("Computer Wins the Series!")
+    }
 }
