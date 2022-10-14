@@ -1,3 +1,5 @@
+//Debug parameter
+let Debug = true;
 
 function getComputerChoice (){
     // Returns 0-2 (3 options)
@@ -27,22 +29,35 @@ function playSingleRound (playerSelection, ComputerChoice){
     } else {
         output = "Computer Wins! " + ComputerChoice + " beats " + playerSelection  + ".";
     }
+    if (Debug){
+        console.log(output);
+    }
     return output;
+
 }
+//Result Div
+function showResultDiv(input){
+    const content = document.querySelector('#container .content');
+
+    content.textContent = input;
+
+    container.appendChild(content);
+}
+
 
 const btnRock = document.querySelector('#btnRock');
 btnRock.addEventListener('click', () => {
-  playSingleRound("Rock",getComputerChoice());
+  showResultDiv(playSingleRound("Rock",getComputerChoice()));
 });
 
 const btnPaper = document.querySelector('#btnPaper');
-btnRock.addEventListener('click', () => {
-  playSingleRound("Paper", getComputerChoice());
+btnPaper.addEventListener('click', () => {
+  showResultDiv(playSingleRound("Paper", getComputerChoice()));
 });
 
 const btnScissors = document.querySelector('#btnScissors');
-btnRock.addEventListener('click', () => {
-  playSingleRound("Scissors",getComputerChoice());
+btnScissors.addEventListener('click', () => {
+  showResultDiv(playSingleRound("Scissors",getComputerChoice()));
 });
 
 function game(){
