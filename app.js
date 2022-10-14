@@ -4,6 +4,7 @@ let Debug = true;
 //Globalvar
 let playerScore = 0;
 let computerScore = 0;
+let isGameover = false;
 
 function getComputerChoice (){
     // Returns 0-2 (3 options)
@@ -39,7 +40,6 @@ function playSingleRound (playerSelection, ComputerChoice){
         console.log(output);
     }
 
-    gamecheck();
     return output;
 
 }
@@ -52,14 +52,25 @@ function updateScore(playerObject){
 
     } else if (playerObject == "computer") {
         computerScore++;
-        const computerScoreEle = document.querySelector('#player h3');
-        computerScoreEle.textContent = playerScore;
+        const computerScoreEle = document.querySelector('#computer h3');
+        computerScoreEle.textContent = computerScore;
     }
 
 }
 
 function gamecheck(){
-    
+    console.log(playerScore, computerScore);
+    if (playerScore >= 5){
+        const content = document.querySelector('#container .content');
+        content.textContent = "Player Wins the Series!";  
+        container.appendChild(content);
+        isGameover = true;
+    } else if (computerScore >= 5){
+        const content = document.querySelector('#container .content');
+        content.textContent = "Computer Wins the Series!";
+        container.appendChild(content);
+        isGameover = true;
+    }
 }
 
 
@@ -70,22 +81,29 @@ function showResultDiv(input){
     content.textContent = input;
 
     container.appendChild(content);
+    gamecheck();
 }
 
 
 const btnRock = document.querySelector('#btnRock');
 btnRock.addEventListener('click', () => {
-  showResultDiv(playSingleRound("Rock",getComputerChoice()));
+  if(!isGameover){
+    showResultDiv(playSingleRound("Rock",getComputerChoice()));
+  }
 });
 
 const btnPaper = document.querySelector('#btnPaper');
 btnPaper.addEventListener('click', () => {
-  showResultDiv(playSingleRound("Paper", getComputerChoice()));
+    if(!isGameover){
+        showResultDiv(playSingleRound("Paper", getComputerChoice()));
+    }
 });
 
 const btnScissors = document.querySelector('#btnScissors');
 btnScissors.addEventListener('click', () => {
-  showResultDiv(playSingleRound("Scissors",getComputerChoice()));
+    if(!isGameover){
+        showResultDiv(playSingleRound("Scissors",getComputerChoice()));
+    }
 });
 
 function game(){
