@@ -30,6 +30,21 @@ function playSingleRound (playerSelection, ComputerChoice){
     return output;
 }
 
+const btnRock = document.querySelector('#btnRock');
+btn.addEventListener('click', () => {
+  playSingleRound("Rock",getComputerChoice());
+});
+
+const btnPaper = document.querySelector('#btnPaper');
+btn.addEventListener('click', () => {
+  playSingleRound("Paper", getComputerChoice());
+});
+
+const btnScissors = document.querySelector('#btnScissors');
+btn.addEventListener('click', () => {
+  playSingleRound("Scissors",getComputerChoice());
+});
+
 function game(){
     let playerScore = 0;
     let computerScore = 0;
