@@ -1,6 +1,10 @@
 //Debug parameter
 let Debug = true;
 
+//Globalvar
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice (){
     // Returns 0-2 (3 options)
     let ran = Math.floor(Math.random()*3);
@@ -25,16 +29,40 @@ function playSingleRound (playerSelection, ComputerChoice){
     } else if (playerSelection == "rock" && ComputerChoice == "scissors"  ||
                playerSelection == "scissors" && ComputerChoice == "paper" ||
                playerSelection == "paper" && ComputerChoice == "rock" ){
-        output = "Player Wins! " + playerSelection + " beats " + ComputerChoice + ".";    
+        output = "Player Wins! " + playerSelection + " beats " + ComputerChoice + "."; 
+        updateScore("player");   
     } else {
         output = "Computer Wins! " + ComputerChoice + " beats " + playerSelection  + ".";
+        updateScore("computer");     
     }
     if (Debug){
         console.log(output);
     }
+
+    gamecheck();
     return output;
 
 }
+
+function updateScore(playerObject){
+    if (playerObject == "player") {
+        playerScore++;
+        const playerScoreEle = document.querySelector('#player h3');
+        playerScoreEle.textContent = playerScore;
+
+    } else if (playerObject == "computer") {
+        computerScore++;
+        const computerScoreEle = document.querySelector('#player h3');
+        computerScoreEle.textContent = playerScore;
+    }
+
+}
+
+function gamecheck(){
+    
+}
+
+
 //Result Div
 function showResultDiv(input){
     const content = document.querySelector('#container .content');
