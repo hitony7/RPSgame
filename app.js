@@ -31,17 +31,17 @@ function playSingleRound (playerSelection, ComputerChoice){
 }
 
 const btnRock = document.querySelector('#btnRock');
-btn.addEventListener('click', () => {
+btnRock.addEventListener('click', () => {
   playSingleRound("Rock",getComputerChoice());
 });
 
 const btnPaper = document.querySelector('#btnPaper');
-btn.addEventListener('click', () => {
+btnRock.addEventListener('click', () => {
   playSingleRound("Paper", getComputerChoice());
 });
 
 const btnScissors = document.querySelector('#btnScissors');
-btn.addEventListener('click', () => {
+btnRock.addEventListener('click', () => {
   playSingleRound("Scissors",getComputerChoice());
 });
 
