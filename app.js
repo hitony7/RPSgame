@@ -71,6 +71,37 @@ function gamecheck(){
         container.appendChild(content);
         isGameover = true;
     }
+    //show Reset state button
+    if (isGameover){
+        console.log("entered");
+        const container = document.querySelector('#reset');
+        const button = document.createElement('button');
+        button.classList.add('resetBut')
+        button.textContent = "Reset";
+        container.appendChild(button);
+
+        button.addEventListener('click', () => {
+                console.log("Reset");
+                playerScore = 0;
+                computerScore = 0;
+                setscore(0,0);
+                isGameover = false;
+                container.removeChild(button);
+                const content = document.querySelector('#container .content');
+                content.textContent = "";
+
+        });
+    }
+}
+
+function setscore(player,computer){
+
+        const playerScoreEle = document.querySelector('#player h3');
+        playerScoreEle.textContent = player;
+
+        const computerScoreEle = document.querySelector('#computer h3');
+        computerScoreEle.textContent = computer;
+
 }
 
 
